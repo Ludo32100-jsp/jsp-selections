@@ -1,9 +1,3 @@
-<select id="anneeSelect">
-  <option value="2026">2026</option>
-  <option value="2027">2027</option>
-  <option value="2028">2028</option>
-</select>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -34,15 +28,25 @@
         <a href="classement.html">Classement</a>
     </nav>
 
-    <button class="btn-dark" onclick="toggleDarkMode()">🌙 Mode sombre</button>
+    <!-- Mode sombre supprimé -->
 </header>
 
 <header><h1>Evaluations JSP</h1></header>
 
+<!-- Sélecteur d'année replacé ici -->
+<div class="annee-container">
+    <label for="anneeSelect">Année :</label>
+    <select id="anneeSelect">
+      <option value="2026">2026</option>
+      <option value="2027">2027</option>
+      <option value="2028">2028</option>
+    </select>
+</div>
+
 <main>
     <button class="btn" onclick="goTo('candidats')">Candidats</button>
-    <button class="btn" onclick="goTo('epreuves')">Nouvelle épreuve</button>
     <button class="btn" onclick="goTo('resultats')">Résultats</button>
+    <button class="btn" onclick="goTo('classement')">Classement</button>
 </main>
 
 <script>

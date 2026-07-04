@@ -261,15 +261,11 @@ function colorerClassement() {
 }
 
 /* ============================
-   NAVIGATION + MODE SOMBRE
+   NAVIGATION
    ============================ */
 
 function goTo(page) {
   window.location.href = page + ".html";
-}
-
-function toggleDarkMode() {
-  document.body.classList.toggle("dark");
 }
 
 /* ============================
@@ -337,5 +333,5 @@ window.ajouterCandidat = ajouterCandidat;
 window.supprimerCandidat = supprimerCandidat;
 window.enregistrerResultat = enregistrerResultat;
 window.goTo = goTo;
-window.toggleDarkMode = toggleDarkMode;
 window.toggleMenu = toggleMenu;
+

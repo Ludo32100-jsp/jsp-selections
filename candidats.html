@@ -1,18 +1,10 @@
-<select id="anneeSelect">
-  <option value="2026">2026</option>
-  <option value="2027">2027</option>
-  <option value="2028">2028</option>
-</select>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Candidats JSP</title>
-
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
@@ -33,59 +25,40 @@
         <a href="resultats.html">Résultats</a>
         <a href="classement.html">Classement</a>
     </nav>
-
-    <button class="btn-dark" onclick="toggleDarkMode()">🌙 Mode sombre</button>
 </header>
 
-<h1 style="text-align:center; margin-top:20px;">Gestion des candidats</h1>
+<h1>Liste des candidats</h1>
 
-<main class="bloc-formulaire">
-
-    <label>Prénom :</label>
-    <input id="prenom" type="text">
-
-    <label>Nom :</label>
-    <input id="nom" type="text">
-
-    <label>Date de naissance :</label>
-    <input id="dateNaissance" type="date">
-
-    <label>Sexe :</label>
-    <select id="sexe">
-        <option value="">-- Choisir --</option>
-        <option value="M">Masculin</option>
-        <option value="F">Féminin</option>
+<div class="annee-container">
+    <label for="anneeSelect">Année :</label>
+    <select id="anneeSelect">
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
     </select>
+</div>
 
-    <label>Adresse :</label>
-    <input id="adresse" type="text">
+<div id="liste-candidats"></div>
 
-    <label>Code Postal :</label>
-    <input id="codePostal" type="text">
+<h2>Ajouter un candidat</h2>
 
-    <label>Ville :</label>
-    <input id="ville" type="text">
-
-    <label>Téléphone :</label>
-    <input id="telephone" type="text">
-
-    <label>Mail :</label>
-    <input id="mail" type="email">
-
-    <button class="btn" onclick="ajouterCandidat()">Ajouter le candidat</button>
-
-</main>
-
-<h2 style="text-align:center;">Liste des candidats</h2>
-<div id="liste-candidats" class="bloc-resultats"></div>
+<div class="bloc-formulaire">
+    <input id="prenom" placeholder="Prénom">
+    <input id="nom" placeholder="Nom">
+    <input id="dateNaissance" type="date">
+    <select id="sexe">
+        <option value="">Sexe</option>
+        <option value="M">Garçon</option>
+        <option value="F">Fille</option>
+    </select>
+    <input id="adresse" placeholder="Adresse">
+    <input id="codePostal" placeholder="Code postal">
+    <input id="ville" placeholder="Ville">
+    <input id="telephone" placeholder="Téléphone">
+    <input id="mail" placeholder="Mail">
+    <button onclick="ajouterCandidat()">Ajouter</button>
+</div>
 
 <script src="app.js"></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    afficherCandidats();
-});
-</script>
-
 </body>
 </html>

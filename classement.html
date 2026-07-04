@@ -1,18 +1,10 @@
-<select id="anneeSelect">
-  <option value="2026">2026</option>
-  <option value="2027">2027</option>
-  <option value="2028">2028</option>
-</select>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Classement JSP</title>
-
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
@@ -33,34 +25,30 @@
         <a href="resultats.html">Résultats</a>
         <a href="classement.html">Classement</a>
     </nav>
-
-    <button class="btn-dark" onclick="toggleDarkMode()">🌙 Mode sombre</button>
 </header>
 
-<h1 style="text-align:center; margin-top:20px;">Classement général</h1>
+<h1>Classement général</h1>
 
-<main>
-    <table id="classement">
-        <thead>
-            <tr>
-                <th onclick="sortTable(0)">Nom</th>
-                <th onclick="sortTable(1)">Total</th>
-                <th onclick="sortTable(2)">Note /20</th>
-            </tr>
-        </thead>
-        <tbody id="classementBody">
-            <!-- Rempli automatiquement par app.js -->
-        </tbody>
-    </table>
-</main>
+<div class="annee-container">
+    <label for="anneeSelect">Année :</label>
+    <select id="anneeSelect">
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+    </select>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Candidat</th>
+            <th>Total brut</th>
+            <th>Note / 20</th>
+        </tr>
+    </thead>
+    <tbody id="classementBody"></tbody>
+</table>
 
 <script src="app.js"></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    afficherClassement();
-});
-</script>
-
 </body>
 </html>

@@ -1,18 +1,10 @@
-<select id="anneeSelect">
-  <option value="2026">2026</option>
-  <option value="2027">2027</option>
-  <option value="2028">2028</option>
-</select>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Résultats JSP</title>
-
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
@@ -33,62 +25,42 @@
         <a href="resultats.html">Résultats</a>
         <a href="classement.html">Classement</a>
     </nav>
-
-    <button class="btn-dark" onclick="toggleDarkMode()">🌙 Mode sombre</button>
 </header>
 
-<h1 style="text-align:center; margin-top:20px;">Saisie des résultats</h1>
+<h1>Résultats des épreuves</h1>
 
-<!-- FORMULAIRE -->
-<main class="bloc-formulaire">
+<div class="annee-container">
+    <label for="anneeSelect">Année :</label>
+    <select id="anneeSelect">
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+    </select>
+</div>
 
-    <label for="candidatSelect"><strong>Candidat :</strong></label>
-    <select id="candidatSelect"></select>
-
-    <label for="epreuveSelect"><strong>Épreuve :</strong></label>
-    <select id="epreuveSelect">
-        <option value="">-- Choisir une épreuve --</option>
-        <option value="Luc Léger">Luc Léger</option>
-        <option value="Tractions">Tractions</option>
-        <option value="Pompes">Pompes</option>
-        <option value="Souplesse">Souplesse</option>
-        <option value="Gainage">Gainage</option>
-        <option value="Squats">Squats</option>
-        <option value="Écrit">Écrit</option>
-        <option value="Oral">Oral</option>
+<div class="bloc-formulaire">
+    <select id="candidatSelect">
+        <option value="">Choisir un candidat</option>
     </select>
 
-    <label for="valeurEpreuve"><strong>Valeur :</strong></label>
-    <input type="number" id="valeurEpreuve" placeholder="Saisir la valeur">
+    <select id="epreuveSelect">
+        <option value="">Choisir une épreuve</option>
+        <option>Luc Léger</option>
+        <option>Tractions</option>
+        <option>Pompes</option>
+        <option>Souplesse</option>
+        <option>Gainage</option>
+        <option>Squats</option>
+        <option>Écrit</option>
+        <option>Oral</option>
+    </select>
 
-    <button class="btn" onclick="enregistrerResultat()">Enregistrer le résultat</button>
+    <input id="valeurEpreuve" placeholder="Valeur">
+    <button onclick="enregistrerResultat()">Enregistrer</button>
+</div>
 
-</main>
-
-<!-- AFFICHAGE DES RESULTATS -->
-<h2 style="text-align:center;">Résultats du candidat</h2>
-<section id="resultats-epreuves" class="bloc-resultats"></section>
+<div id="resultats-epreuves" class="bloc-resultats"></div>
 
 <script src="app.js"></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const candidats = getCandidats();
-    const select = document.getElementById("candidatSelect");
-
-    candidats.forEach(c => {
-        const opt = document.createElement("option");
-        opt.value = c.id;
-        opt.textContent = `${c.prenom} ${c.nom}`;
-        select.appendChild(opt);
-    });
-
-    // Affichage automatique si un candidat est sélectionné
-    select.addEventListener("change", () => {
-        afficherResultatsCandidat(select.value);
-    });
-});
-</script>
-
 </body>
 </html>
