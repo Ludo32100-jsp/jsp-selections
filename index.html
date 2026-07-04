@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JSP - Evaluations</title>
-
+    <title>Accueil - Sélections JSP</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
@@ -27,37 +25,25 @@
         <a href="resultats.html">Résultats</a>
         <a href="classement.html">Classement</a>
     </nav>
-
-    <!-- Mode sombre supprimé -->
 </header>
 
-<header><h1>Evaluations JSP</h1></header>
+<h1>Application Sélections JSP</h1>
 
-<!-- Sélecteur d'année replacé ici -->
 <div class="annee-container">
     <label for="anneeSelect">Année :</label>
     <select id="anneeSelect">
-      <option value="2026">2026</option>
-      <option value="2027">2027</option>
-      <option value="2028">2028</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
     </select>
 </div>
 
-<main>
-    <button class="btn" onclick="goTo('candidats')">Candidats</button>
-    <button class="btn" onclick="goTo('resultats')">Résultats</button>
-    <button class="btn" onclick="goTo('classement')">Classement</button>
-</main>
-
-<script>
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js")
-        .then(() => console.log("Service worker OK"))
-        .catch(err => console.log("SW erreur :", err));
-}
-</script>
+<div class="home-buttons">
+    <button class="btn" onclick="location.href='candidats.html'">Candidats</button>
+    <button class="btn" onclick="location.href='resultats.html'">Résultats</button>
+    <button class="btn" onclick="location.href='classement.html'">Classement</button>
+</div>
 
 <script src="app.js"></script>
-
 </body>
 </html>
