@@ -1,66 +1,125 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Accueil - Sélections JSP</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header class="topbar">
-
-    <!-- Bouton hamburger (mobile) -->
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-
-    <!-- Menu desktop -->
-    <nav>
-        <a href="index.html">Accueil</a>
-        <a href="candidats.html">Candidats</a>
-        <a href="resultats.html">Résultats</a>
-        <a href="classement.html">Classement</a>
-    </nav>
-
-    <!-- Menu mobile -->
-    <div id="mobileMenu" class="mobile-menu">
-        <a href="index.html">Accueil</a>
-        <a href="candidats.html">Candidats</a>
-        <a href="resultats.html">Résultats</a>
-        <a href="classement.html">Classement</a>
-    </div>
-
-</header>
-
-<h1>Application Sélections JSP</h1>
-
-<!-- Sélecteur d'année -->
-<div class="annee-container">
-    <label for="anneeSelect">Année :</label>
-    <select id="anneeSelect">
-        <option value="2026">2026</option>
-        <option value="2027">2027</option>
-        <option value="2028">2028</option>
-    </select>
-</div>
-
-<!-- Gros boutons bleus -->
-<div class="home-buttons">
-    <button class="btn" onclick="location.href='candidats.html'">Candidats</button>
-    <button class="btn" onclick="location.href='resultats.html'">Résultats</button>
-    <button class="btn" onclick="location.href='classement.html'">Classement</button>
-</div>
-
-<!-- Script menu mobile -->
-<script>
-function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+/* ============================
+   RESET
+   ============================ */
+body { 
+    background:#f7f7f7; 
+    font-family:Arial; 
+    margin:0; 
+    padding:0; 
 }
-</script>
 
-<!-- Script Firebase + logique -->
-<script src="app.js"></script>
+/* ============================
+   TOPBAR
+   ============================ */
+.topbar {
+    background:#fff;
+    padding:15px;
+    border-bottom:1px solid #ddd;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
-</body>
-</html>
+.topbar nav {
+    display:flex;
+    gap:25px;
+}
+
+.topbar a {
+    font-size:18px;
+    color:#2d7ff9;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.topbar a:hover {
+    text-decoration:underline;
+}
+
+/* ============================
+   HAMBURGER
+   ============================ */
+.hamburger {
+    display:none;
+    font-size:32px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    position:absolute;
+    left:10px;
+}
+
+/* ============================
+   MOBILE MENU
+   ============================ */
+.mobile-menu {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:70%;
+    height:100%;
+    background:#fff;
+    box-shadow:2px 0 10px rgba(0,0,0,0.3);
+    padding-top:60px;
+    z-index:9999;
+    flex-direction:column;
+}
+
+.mobile-menu a {
+    padding:20px;
+    font-size:20px;
+    border-bottom:1px solid #ddd;
+    text-decoration:none;
+    color:#2d7ff9;
+}
+
+.mobile-menu a:hover {
+    background:#f0f0f0;
+}
+
+/* ============================
+   HOME BUTTONS
+   ============================ */
+.btn { 
+    display:block; 
+    width:90%; 
+    margin:20px auto; 
+    padding:20px; 
+    font-size:20px; 
+    background:#2d7ff9; 
+    color:white; 
+    border:none; 
+    border-radius:10px; 
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 768px) {
+
+    .hamburger {
+        display:block;
+    }
+
+    .topbar nav {
+        display:none;
+    }
+}
+
+/* ============================
+   SELECTEUR D'ANNÉE
+   ============================ */
+.annee-container {
+    width:90%;
+    margin:20px auto;
+    text-align:center;
+}
+
+.annee-container select {
+    font-size:18px;
+    padding:10px;
+    border-radius:8px;
+    width:60%;
+}
