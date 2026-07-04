@@ -1,0 +1,180 @@
+body { 
+    background:#f7f7f7; 
+    font-family:Arial; 
+    margin:0; 
+    padding:0; 
+} 
+
+header { 
+    background:#fff; 
+    padding:20px; 
+    text-align:center; 
+    border-bottom:1px solid #ddd; 
+} 
+
+.btn { 
+    display:block; 
+    width:90%; 
+    margin:20px auto; 
+    padding:20px; 
+    font-size:20px; 
+    background:#2d7ff9; 
+    color:white; 
+    border:none; 
+    border-radius:10px; 
+} 
+
+.btn-home {
+    background:#444;
+}
+
+.topbar {
+    background:#fff;
+    padding:15px;
+    border-bottom:1px solid #ddd;
+    position:relative;
+}
+
+.topbar nav {
+    display:flex;
+    justify-content:center;
+    gap:25px;
+}
+
+.topbar a {
+    font-size:18px;
+    color:#2d7ff9;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.topbar a:hover {
+    text-decoration:underline;
+}
+
+/* ============================
+   VERSION MOBILE
+   ============================ */
+
+@media (max-width: 768px) {
+
+    /* Menu mobile */
+    .topbar nav {
+        display: none; /* On cache le menu classique */
+    }
+
+    .hamburger {
+        display:block;
+        font-size:32px;
+        background:none;
+        border:none;
+        cursor:pointer;
+        margin-left:10px;
+    }
+
+    .mobile-menu {
+        display:none;
+        position:fixed;
+        top:0;
+        left:0;
+        width:70%;
+        height:100%;
+        background:#fff;
+        box-shadow:2px 0 10px rgba(0,0,0,0.3);
+        padding-top:60px;
+        z-index:9999;
+        flex-direction:column;
+    }
+
+    .mobile-menu a {
+        padding:20px;
+        font-size:20px;
+        border-bottom:1px solid #ddd;
+        text-decoration:none;
+        color:#2d7ff9;
+    }
+
+    .mobile-menu a:hover {
+        background:#f0f0f0;
+    }
+
+    /* Titres */
+    h1, h2, h3 {
+        font-size:22px;
+        text-align:center;
+        margin:20px 0;
+    }
+
+    /* Formulaires */
+    .bloc-formulaire {
+        width:90%;
+        margin:auto;
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    input, select, button {
+        font-size:18px;
+        padding:12px;
+        border-radius:6px;
+        width:100%;
+    }
+
+    button {
+        background:#2d7ff9;
+        color:white;
+        font-weight:bold;
+        border:none;
+    }
+
+    /* Liste candidats */
+    #liste-candidats ul {
+        padding:0;
+    }
+
+    #liste-candidats li {
+        font-size:18px;
+        padding:10px;
+    }
+
+    /* Tableau classement */
+    table {
+        width:100%;
+        font-size:16px;
+    }
+
+    th, td {
+        padding:10px;
+    }
+
+    th {
+        font-size:18px;
+    }
+
+    /* Bloc résultats */
+    .bloc-resultats {
+        width:90%;
+        margin:auto;
+        font-size:18px;
+    }
+}
+
+/* ============================
+   SELECTEUR D'ANNÉE
+   ============================ */
+
+.annee-container {
+    width:90%;
+    margin:20px auto;
+    text-align:center;
+}
+
+.annee-container select {
+    font-size:18px;
+    padding:10px;
+    border-radius:8px;
+    width:60%;
+}
+
+
