@@ -58,6 +58,12 @@
         <option value="Oral">Oral</option>
     </select>
 
+    <!-- Bloc barème -->
+    <div id="baremeInfo" class="bareme-box" style="display:none;">
+        <p><strong>📏 Barème</strong></p>
+        <div id="baremeContent"></div>
+    </div>
+
     <!-- Valeur de l'épreuve (par défaut) -->
     <label for="valeurEpreuve">Valeur :</label>
     <input type="number" id="valeurEpreuve">
@@ -84,7 +90,6 @@ function toggleMenu() {
 }
 </script>
 
-<!-- IMPORTANT : module obligatoire -->
 <script type="module" src="app.js"></script>
 
 </body>
