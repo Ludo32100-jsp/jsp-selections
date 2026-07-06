@@ -257,17 +257,19 @@ function afficherClassement() {
   const classement = candidatsCache.map(c => {
     const data = calculTotalCandidat(c.id);
     return {
-      nom: `${c.prenom} ${c.nom}`,
+      prenom: c.prenom,
+      nom: c.nom,
       total: data.totalBrut,
       note: data.note20
     };
   }).sort((a, b) => b.note - a.note);
 
-  classement.forEach(c => {
+  classement.forEach((c, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
+      <td>${index + 1}</td>
       <td>${c.nom}</td>
-      <td>${c.total}</td>
+      <td>${c.prenom}</td>
       <td>${c.note}</td>
     `;
     body.appendChild(row);
@@ -334,7 +336,7 @@ function chargerAnnee(annee) {
     candidatsCache = Object.values(data);
     afficherCandidats();
     afficherClassement();
-    remplirSelectCandidats();   // ← AJOUT OBLIGATOIRE
+    remplirSelectCandidats();
   });
 
   // Résultats
@@ -367,3 +369,4 @@ window.supprimerCandidat = supprimerCandidat;
 window.enregistrerResultat = enregistrerResultat;
 window.goTo = goTo;
 window.toggleMenu = toggleMenu;
+
