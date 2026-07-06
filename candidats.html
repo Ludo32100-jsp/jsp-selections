@@ -3,29 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Candidats JSP</title>
+    <title>Candidats - Sélections JSP</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<header class="topbar">
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-
-    <div id="mobileMenu" class="mobile-menu">
-        <a href="index.html">Accueil</a>
-        <a href="candidats.html">Candidats</a>
-        <a href="resultats.html">Résultats</a>
-        <a href="classement.html">Classement</a>
-    </div>
-
-    <nav>
-        <a href="index.html">Accueil</a>
-        <a href="candidats.html">Candidats</a>
-        <a href="resultats.html">Résultats</a>
-        <a href="classement.html">Classement</a>
-    </nav>
-</header>
-
 
 <header class="topbar">
     <button class="hamburger" onclick="toggleMenu()">☰</button>
@@ -56,28 +38,36 @@
     </select>
 </div>
 
-<div id="liste-candidats"></div>
+<div class="form-container">
+    <h2>Ajouter un candidat</h2>
 
-<h2>Ajouter un candidat</h2>
+    <label>Prénom</label>
+    <input type="text" id="prenom">
 
-<div class="bloc-formulaire">
-    <input id="prenom" placeholder="Prénom">
-    <input id="nom" placeholder="Nom">
-    <input id="dateNaissance" type="date">
-    <select id="sexe">
-        <option value="">Sexe</option>
-        <option value="M">Garçon</option>
-        <option value="F">Fille</option>
-    </select>
-    <input id="adresse" placeholder="Adresse">
-    <input id="codePostal" placeholder="Code postal">
-    <input id="ville" placeholder="Ville">
-    <input id="telephone" placeholder="Téléphone">
-    <input id="mail" placeholder="Mail">
-    <button onclick="ajouterCandidat()">Ajouter</button>
+    <label>Nom</label>
+    <input type="text" id="nom">
+
+    <label>Sexe</label>
+    <input type="text" id="sexe">
+
+    <label>Adresse</label>
+    <input type="text" id="adresse">
+
+    <label>Code postal</label>
+    <input type="text" id="cp">
+
+    <label>Ville</label>
+    <input type="text" id="ville">
+
+    <label>Téléphone</label>
+    <input type="text" id="tel">
+
+    <label>Mail</label>
+    <input type="text" id="mail">
+
+    <button class="btn">Ajouter</button>
 </div>
 
-<script src="app.js"></script>
 <script>
 function toggleMenu() {
     const menu = document.getElementById("mobileMenu");
@@ -85,5 +75,6 @@ function toggleMenu() {
 }
 </script>
 
+<script src="app.js"></script>
 </body>
 </html>
