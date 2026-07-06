@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Candidats JSP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header class="topbar">
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="index.html">Accueil</a>
+        <a href="candidats.html">Candidats</a>
+        <a href="resultats.html">Résultats</a>
+        <a href="classement.html">Classement</a>
+    </div>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="candidats.html">Candidats</a>
+        <a href="resultats.html">Résultats</a>
+        <a href="classement.html">Classement</a>
+    </nav>
+</header>
+
+
+<header class="topbar">
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="index.html">Accueil</a>
+        <a href="candidats.html">Candidats</a>
+        <a href="resultats.html">Résultats</a>
+        <a href="classement.html">Classement</a>
+    </div>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="candidats.html">Candidats</a>
+        <a href="resultats.html">Résultats</a>
+        <a href="classement.html">Classement</a>
+    </nav>
+</header>
+
+<h1>Liste des candidats</h1>
+
+<div class="annee-container">
+    <label for="anneeSelect">Année :</label>
+    <select id="anneeSelect">
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+    </select>
+</div>
+
+<div id="liste-candidats"></div>
+
+<h2>Ajouter un candidat</h2>
+
+<div class="bloc-formulaire">
+    <input id="prenom" placeholder="Prénom">
+    <input id="nom" placeholder="Nom">
+    <input id="dateNaissance" type="date">
+    <select id="sexe">
+        <option value="">Sexe</option>
+        <option value="M">Garçon</option>
+        <option value="F">Fille</option>
+    </select>
+    <input id="adresse" placeholder="Adresse">
+    <input id="codePostal" placeholder="Code postal">
+    <input id="ville" placeholder="Ville">
+    <input id="telephone" placeholder="Téléphone">
+    <input id="mail" placeholder="Mail">
+    <button onclick="ajouterCandidat()">Ajouter</button>
+</div>
+
+<script src="app.js"></script>
+<script>
+function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("show");
+}
+</script>
+
+</body>
+</html>
