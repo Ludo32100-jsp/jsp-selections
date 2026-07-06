@@ -438,6 +438,9 @@ document.addEventListener("DOMContentLoaded", () => {
         gainageInputs.style.display = "none";
       }
     });
+
+    // 🟩 Affichage automatique du barème au chargement
+    afficherBareme(epreuveSelect.value);
   }
 
   // Chargement initial
