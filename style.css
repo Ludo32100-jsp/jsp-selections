@@ -214,3 +214,30 @@ select {
     border-radius:8px;
     margin-bottom:15px;
 }
+
+/* ============================
+   BAREME BOX (NOUVEAU)
+   ============================ */
+.bareme-box {
+    background:#f3f3f3;
+    padding:12px;
+    border-radius:8px;
+    margin-top:15px;
+    margin-bottom:20px; /* espace sous le barème */
+    border-left:4px solid #888;
+    line-height:1.5;
+}
+
+.bareme-box p {
+    margin:0 0 10px 0; /* espace entre "📏 Barème" et le contenu */
+}
+
+/* ============================
+   LABELS EN GRAS (NOUVEAU)
+   ============================ */
+label {
+    font-weight:bold;
+    margin-top:10px;
+    display:block;
+}
+
