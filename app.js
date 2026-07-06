@@ -225,15 +225,15 @@ function calculPoints(epreuve, valeur, sexe) {
 
   switch (epreuve) {
     case "Luc Léger":
-      pts = sexe === "M" ? (v / 7) * 20 : ((v - 0.15) / (5 - 0.15)) * 20;
+      pts = sexe === "M" ? (v / 7) * 20 : (v / 5) * 20;
       break;
 
     case "Tractions":
-      pts = sexe === "M" ? 10 + v : 10 + v * 2;
+      pts = sexe === "M" ? (v / 10) * 20 : (v / 5) * 20;
       break;
 
     case "Pompes":
-      pts = sexe === "M" ? v * 0.8 : v * 1.3;
+      pts = sexe === "M" ? (v / 25) * 20 : (v / 15) * 20;
       break;
 
     case "Souplesse":
@@ -417,5 +417,40 @@ document.addEventListener("DOMContentLoaded", () => {
       chargerAnnee(selectAnnee.value);
     });
   }
+
+  const epreuveSelect = document.getElementById("epreuveSelect");
+  const valeurInput = document.getElementById("valeurEpreuve");
+  const gainageInputs = document.getElementById("gainageInputs");
+
+  if (epreuveSelect && valeurInput && gainageInputs) {
+    epreuveSelect.addEventListener("change", () => {
+      afficherBareme(epreuveSelect.value);
+
+      valeurInput.value = "";
+      document.getElementById("gainageMin").value = "";
+      document.getElementById("gainageSec").value = "";
+
+      if (epreuveSelect.value === "Gainage") {
+        valeurInput.style.display = "none";
+        gainageInputs.style.display = "block";
+      } else {
+        valeurInput.style.display = "block";
+        gainageInputs.style.display = "none";
+      }
+    });
+  }
+
+  // Chargement initial
+  chargerAnnee(anneeCourante);
+});
+
+// Exposer fonctions globales
+window.ajouterCandidat = ajouterCandidat;
+window.supprimerCandidat = supprimerCandidat;
+window.enregistrerResultat = enregistrerResultat;
+window.toggleMenu = () => {
+  const menu = document.getElementById("mobileMenu");
+  menu.classList.toggle("show");
+};
 
 
