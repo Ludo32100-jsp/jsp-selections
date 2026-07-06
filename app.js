@@ -24,6 +24,80 @@ let candidatsCache = [];
 let resultatsCache = {}; // { candidatId: { epreuve: { valeur, points } } }
 
 /* ============================
+   BARÈMES AUTOMATIQUES
+   ============================ */
+
+function afficherBareme(epreuve) {
+  const box = document.getElementById("baremeInfo");
+  const content = document.getElementById("baremeContent");
+
+  if (!box || !content) return;
+
+  // Écrit / Oral → pas de barème
+  if (epreuve === "Écrit" || epreuve === "Oral") {
+    box.style.display = "none";
+    content.innerHTML = "";
+    return;
+  }
+
+  box.style.display = "block";
+
+  let txt = "";
+
+  switch(epreuve) {
+    case "Luc Léger":
+      txt = `
+        Homme : Min 0 → Max 7 (20 pts)<br>
+        Femme : Min 0 → Max 5 (20 pts)<br>
+        Progression linéaire
+      `;
+      break;
+
+    case "Tractions":
+      txt = `
+        Homme : Min 0 → Max 10 (20 pts)<br>
+        Femme : Min 0 → Max 5 (20 pts)<br>
+        Progression linéaire
+      `;
+      break;
+
+    case "Pompes":
+      txt = `
+        Homme : Min 0 → Max 25 (20 pts)<br>
+        Femme : Min 0 → Max 15 (20 pts)<br>
+        Progression linéaire
+      `;
+      break;
+
+    case "Souplesse":
+      txt = `
+        Homme : Min 0 cm → Max 47 cm (20 pts)<br>
+        Femme : Min 0 cm → Max 51 cm (20 pts)<br>
+        Progression linéaire
+      `;
+      break;
+
+    case "Gainage":
+      txt = `
+        Homme : Min 1'10 → Max 4'00 (20 pts)<br>
+        Femme : Min 1'00 → Max 4'00 (20 pts)<br>
+        Progression linéaire
+      `;
+      break;
+
+    case "Squats":
+      txt = `
+        Homme : Min 1 → Max 60 (20 pts)<br>
+        Femme : Min 3 → Max 60 (20 pts)<br>
+        Progression linéaire
+      `;
+      break;
+  }
+
+  content.innerHTML = txt;
+}
+
+/* ============================
    GESTION DES CANDIDATS
    ============================ */
 
@@ -304,35 +378,6 @@ function colorerClassement() {
 }
 
 /* ============================
-   NAVIGATION
-   ============================ */
-
-function goTo(page) {
-  window.location.href = page + ".html";
-}
-
-/* ============================
-   MENU MOBILE
-   ============================ */
-
-function toggleMenu() {
-  const menu = document.getElementById("mobileMenu");
-  if (!menu) return;
-  menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
-}
-
-document.addEventListener("click", (e) => {
-  const menu = document.getElementById("mobileMenu");
-  const burger = document.querySelector(".hamburger");
-
-  if (!menu || !burger) return;
-
-  if (!menu.contains(e.target) && !burger.contains(e.target)) {
-    menu.style.display = "none";
-  }
-});
-
-/* ============================
    SYNCHRO TEMPS RÉEL FIREBASE
    ============================ */
 
@@ -361,7 +406,7 @@ function chargerAnnee(annee) {
 }
 
 /* ============================
-   INIT + RESET VALEUR SUR CHANGEMENT D'ÉPREUVE
+   INIT + RESET + BARÈMES
    ============================ */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -373,32 +418,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const epreuveSelect = document.getElementById("epreuveSelect");
-  const valeurInput = document.getElementById("valeurEpreuve");
-  const gainageInputs = document.getElementById("gainageInputs");
 
-  if (epreuveSelect && valeurInput && gainageInputs) {
-    epreuveSelect.addEventListener("change", () => {
-      valeurInput.value = "";
-      document.getElementById("gainageMin").value = "";
-      document.getElementById("gainageSec").value = "";
-
-      if (epreuveSelect.value === "Gainage") {
-        valeurInput.style.display = "none";
-        gainageInputs.style.display = "block";
-      } else {
-        valeurInput.style.display = "block";
-        gainageInputs.style.display = "none";
-      }
-    });
-  }
-
-  chargerAnnee(anneeCourante);
-});
-
-// Exposer fonctions globales
-window.ajouterCandidat = ajouterCandidat;
-window.supprimerCandidat = supprimerCandidat;
-window.enregistrerResultat = enregistrerResultat;
-window.goTo = goTo;
-window.toggleMenu = toggleMenu;
