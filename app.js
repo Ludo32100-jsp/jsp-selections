@@ -351,12 +351,24 @@ function chargerAnnee(annee) {
   });
 }
 
+/* ============================
+   INIT + RESET VALEUR SUR CHANGEMENT D'ÉPREUVE
+   ============================ */
+
 document.addEventListener("DOMContentLoaded", () => {
   const selectAnnee = document.getElementById("anneeSelect");
   if (selectAnnee) {
     anneeCourante = selectAnnee.value;
     selectAnnee.addEventListener("change", () => {
       chargerAnnee(selectAnnee.value);
+    });
+  }
+
+  const epreuveSelect = document.getElementById("epreuveSelect");
+  const valeurInput = document.getElementById("valeurEpreuve");
+  if (epreuveSelect && valeurInput) {
+    epreuveSelect.addEventListener("change", () => {
+      valeurInput.value = "";
     });
   }
 
@@ -369,4 +381,3 @@ window.supprimerCandidat = supprimerCandidat;
 window.enregistrerResultat = enregistrerResultat;
 window.goTo = goTo;
 window.toggleMenu = toggleMenu;
-
