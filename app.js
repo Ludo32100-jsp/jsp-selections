@@ -1,4 +1,7 @@
-// --- Firebase ---
+/* ============================
+   --- Firebase ---
+   ============================ */
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
@@ -33,7 +36,6 @@ function afficherBareme(epreuve) {
 
   if (!box || !content) return;
 
-  // Écrit / Oral → pas de barème
   if (epreuve === "Écrit" || epreuve === "Oral") {
     box.style.display = "none";
     content.innerHTML = "";
@@ -147,7 +149,6 @@ function ajouterCandidat() {
 
   set(ref(db, `candidats/${anneeCourante}/${id}`), candidat);
 }
-
 /* ============================
    SUPPRESSION D'UN CANDIDAT
    ============================ */
@@ -241,11 +242,15 @@ function calculPoints(epreuve, valeur, sexe) {
       break;
 
     case "Gainage":
-      pts = sexe === "M" ? ((v - 70) / (240 - 70)) * 20 : ((v - 60) / (240 - 60)) * 20;
+      pts = sexe === "M"
+        ? ((v - 70) / (240 - 70)) * 20
+        : ((v - 60) / (240 - 60)) * 20;
       break;
 
     case "Squats":
-      pts = sexe === "M" ? ((v - 1) / (60 - 1)) * 20 : ((v - 3) / (60 - 3)) * 20;
+      pts = sexe === "M"
+        ? ((v - 1) / (60 - 1)) * 20
+        : ((v - 3) / (60 - 3)) * 20;
       break;
 
     case "Écrit":
@@ -376,7 +381,6 @@ function colorerClassement() {
     }
   });
 }
-
 /* ============================
    SYNCHRO TEMPS RÉEL FIREBASE
    ============================ */
@@ -406,13 +410,39 @@ function chargerAnnee(annee) {
 }
 
 /* ============================
+   ANNEES DYNAMIQUES
+   ============================ */
+
+function remplirAnneesDynamiques() {
+  const selectAnnee = document.getElementById("anneeSelect");
+  if (!selectAnnee) return;
+
+  const startYear = 2026;
+  const currentYear = new Date().getFullYear();
+
+  selectAnnee.innerHTML = "";
+
+  for (let y = startYear; y <= currentYear + 5; y++) {
+    const opt = document.createElement("option");
+    opt.value = y;
+    opt.textContent = y;
+    selectAnnee.appendChild(opt);
+  }
+}
+
+/* ============================
    INIT + RESET + BARÈMES
    ============================ */
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  // 🟩 Remplissage automatique des années
+  remplirAnneesDynamiques();
+
   const selectAnnee = document.getElementById("anneeSelect");
   if (selectAnnee) {
     anneeCourante = selectAnnee.value;
+
     selectAnnee.addEventListener("change", () => {
       chargerAnnee(selectAnnee.value);
     });
@@ -439,7 +469,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // 🟩 Affichage automatique du barème au chargement
     afficherBareme(epreuveSelect.value);
   }
 
@@ -455,5 +484,3 @@ window.toggleMenu = () => {
   const menu = document.getElementById("mobileMenu");
   menu.classList.toggle("show");
 };
-
-
