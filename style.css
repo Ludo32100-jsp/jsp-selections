@@ -21,6 +21,7 @@ body {
     justify-content:center;
 }
 
+/* Menu desktop */
 .topbar nav {
     display:flex;
     gap:25px;
@@ -54,7 +55,7 @@ body {
    MOBILE MENU
    ============================ */
 .mobile-menu {
-    display:none;
+    display:none; /* caché par défaut */
     position:fixed;
     top:0;
     left:0;
@@ -79,6 +80,11 @@ body {
     background:#f0f0f0;
 }
 
+/* Classe activée par JS */
+.mobile-menu.show {
+    display:flex !important;
+}
+
 /* ============================
    HOME BUTTONS
    ============================ */
@@ -99,10 +105,12 @@ body {
    ============================ */
 @media (max-width: 768px) {
 
+    /* Affiche le hamburger */
     .hamburger {
         display:block;
     }
 
+    /* Cache le menu desktop */
     .topbar nav {
         display:none;
     }
