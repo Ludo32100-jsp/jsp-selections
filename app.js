@@ -186,7 +186,16 @@ function calculPoints(epreuve, valeur, sexe) {
 function enregistrerResultat() {
   const candidatId = Number(document.getElementById("candidatSelect").value);
   const epreuve = document.getElementById("epreuveSelect").value;
-  const valeur = document.getElementById("valeurEpreuve").value;
+
+  let valeur;
+
+  if (epreuve === "Gainage") {
+    const min = Number(document.getElementById("gainageMin").value) || 0;
+    const sec = Number(document.getElementById("gainageSec").value) || 0;
+    valeur = (min * 60) + sec;
+  } else {
+    valeur = Number(document.getElementById("valeurEpreuve").value);
+  }
 
   if (!candidatId || !epreuve || valeur === "") {
     alert("Merci de choisir un candidat, une épreuve et de saisir une valeur.");
@@ -366,9 +375,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const epreuveSelect = document.getElementById("epreuveSelect");
   const valeurInput = document.getElementById("valeurEpreuve");
-  if (epreuveSelect && valeurInput) {
+  const gainageInputs = document.getElementById("gainageInputs");
+
+  if (epreuveSelect && valeurInput && gainageInputs) {
     epreuveSelect.addEventListener("change", () => {
       valeurInput.value = "";
+      document.getElementById("gainageMin").value = "";
+      document.getElementById("gainageSec").value = "";
+
+      if (epreuveSelect.value === "Gainage") {
+        valeurInput.style.display = "none";
+        gainageInputs.style.display = "block";
+      } else {
+        valeurInput.style.display = "block";
+        gainageInputs.style.display = "none";
+      }
     });
   }
 
