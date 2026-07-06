@@ -81,10 +81,7 @@ function ajouterCandidat() {
 function supprimerCandidat(id) {
   if (!confirm("Supprimer ce candidat ?")) return;
 
-  // Supprime le candidat
   remove(ref(db, `candidats/${anneeCourante}/${id}`));
-
-  // Supprime aussi ses résultats
   remove(ref(db, `resultats/${anneeCourante}/${id}`));
 }
 
@@ -124,6 +121,24 @@ function afficherCandidats() {
 
   html += "</ul>";
   liste.innerHTML = html;
+}
+
+/* ============================
+   REMPLIR SELECT DES CANDIDATS
+   ============================ */
+
+function remplirSelectCandidats() {
+  const select = document.getElementById("candidatSelect");
+  if (!select) return;
+
+  select.innerHTML = "";
+
+  candidatsCache.forEach(c => {
+    const opt = document.createElement("option");
+    opt.value = c.id;
+    opt.textContent = `${c.prenom} ${c.nom}`;
+    select.appendChild(opt);
+  });
 }
 
 /* ============================
@@ -319,6 +334,7 @@ function chargerAnnee(annee) {
     candidatsCache = Object.values(data);
     afficherCandidats();
     afficherClassement();
+    remplirSelectCandidats();   // ← AJOUT OBLIGATOIRE
   });
 
   // Résultats
