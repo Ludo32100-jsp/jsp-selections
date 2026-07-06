@@ -1,6 +1,6 @@
 // --- Firebase ---
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
 // --- Config Firebase ---
 const firebaseConfig = {
@@ -74,9 +74,23 @@ function ajouterCandidat() {
   set(ref(db, `candidats/${anneeCourante}/${id}`), candidat);
 }
 
+/* ============================
+   SUPPRESSION D'UN CANDIDAT
+   ============================ */
+
 function supprimerCandidat(id) {
-  set(ref(db, `candidats/${anneeCourante}/${id}`), null);
+  if (!confirm("Supprimer ce candidat ?")) return;
+
+  // Supprime le candidat
+  remove(ref(db, `candidats/${anneeCourante}/${id}`));
+
+  // Supprime aussi ses résultats
+  remove(ref(db, `resultats/${anneeCourante}/${id}`));
 }
+
+/* ============================
+   AFFICHAGE DES CANDIDATS
+   ============================ */
 
 function afficherCandidats() {
   const liste = document.getElementById("liste-candidats");
@@ -86,7 +100,7 @@ function afficherCandidats() {
 
   candidatsCache.forEach(c => {
     html += `
-      <li>
+      <li class="candidat-card">
         <strong>${c.prenom} ${c.nom}</strong> (${c.age} ans)
         <br>
         Sexe : ${c.sexe}
@@ -98,8 +112,11 @@ function afficherCandidats() {
         Tel : ${c.telephone}
         <br>
         Mail : ${c.mail}
-        <br>
-        <button onclick="supprimerCandidat(${c.id})">Supprimer</button>
+        <br><br>
+
+        <button class="btn-delete" onclick="supprimerCandidat(${c.id})">
+          Supprimer
+        </button>
       </li>
       <hr>
     `;
@@ -213,7 +230,7 @@ function afficherResultatsCandidat(candidatId) {
 }
 
 /* ============================
-   CLASSEMENT AUTOMATIQUE EN DIRECT
+   CLASSEMENT AUTOMATIQUE
    ============================ */
 
 function afficherClassement() {
@@ -334,4 +351,3 @@ window.supprimerCandidat = supprimerCandidat;
 window.enregistrerResultat = enregistrerResultat;
 window.goTo = goTo;
 window.toggleMenu = toggleMenu;
-
