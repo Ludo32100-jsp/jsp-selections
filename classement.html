@@ -3,29 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Classement JSP</title>
+    <title>Classement - Sélections JSP</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<header class="topbar">
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-
-    <div id="mobileMenu" class="mobile-menu">
-        <a href="index.html">Accueil</a>
-        <a href="candidats.html">Candidats</a>
-        <a href="resultats.html">Résultats</a>
-        <a href="classement.html">Classement</a>
-    </div>
-
-    <nav>
-        <a href="index.html">Accueil</a>
-        <a href="candidats.html">Candidats</a>
-        <a href="resultats.html">Résultats</a>
-        <a href="classement.html">Classement</a>
-    </nav>
-</header>
-
 
 <header class="topbar">
     <button class="hamburger" onclick="toggleMenu()">☰</button>
@@ -56,18 +38,10 @@
     </select>
 </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Candidat</th>
-            <th>Total brut</th>
-            <th>Note / 20</th>
-        </tr>
-    </thead>
-    <tbody id="classementBody"></tbody>
-</table>
+<div class="content">
+    <p>Ici tu afficheras le classement final.</p>
+</div>
 
-<script src="app.js"></script>
 <script>
 function toggleMenu() {
     const menu = document.getElementById("mobileMenu");
@@ -75,5 +49,6 @@ function toggleMenu() {
 }
 </script>
 
+<script src="app.js"></script>
 </body>
 </html>
