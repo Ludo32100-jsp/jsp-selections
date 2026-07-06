@@ -38,17 +38,26 @@
     </select>
 </div>
 
-<div class="content">
-    <p>Ici tu afficheras le classement final.</p>
+<!-- TABLEAU DU CLASSEMENT -->
+<div class="form-container">
+    <h2>Classement final</h2>
+
+    <table style="width:100%; border-collapse:collapse; text-align:center;">
+        <thead>
+            <tr>
+                <th>Rang</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Moyenne</th>
+            </tr>
+        </thead>
+
+        <!-- IMPORTANT : ID EXACTEMENT COMME DANS app.js -->
+        <tbody id="classementBody"></tbody>
+    </table>
 </div>
 
-<script>
-function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("show");
-}
-</script>
+<script type="module" src="app.js"></script>
 
-<script src="app.js"></script>
 </body>
 </html>
