@@ -38,17 +38,37 @@
     </select>
 </div>
 
-<div class="content">
-    <p>Ici tu afficheras les résultats des candidats.</p>
+<div class="form-container">
+    <h2>Enregistrer un résultat</h2>
+
+    <!-- Sélection du candidat -->
+    <label for="candidatSelect">Candidat :</label>
+    <select id="candidatSelect"></select>
+
+    <!-- Sélection de l'épreuve -->
+    <label for="epreuveSelect">Épreuve :</label>
+    <select id="epreuveSelect">
+        <option value="Luc Léger">Luc Léger</option>
+        <option value="Tractions">Tractions</option>
+        <option value="Pompes">Pompes</option>
+        <option value="Souplesse">Souplesse</option>
+        <option value="Gainage">Gainage</option>
+        <option value="Squats">Squats</option>
+        <option value="Écrit">Écrit</option>
+        <option value="Oral">Oral</option>
+    </select>
+
+    <!-- Valeur de l'épreuve -->
+    <label for="valeurEpreuve">Valeur :</label>
+    <input type="number" id="valeurEpreuve">
+
+    <button class="btn" onclick="enregistrerResultat()">Enregistrer</button>
 </div>
 
-<script>
-function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("show");
-}
-</script>
+<h2>Résultats du candidat</h2>
+<div id="resultats-epreuves"></div>
 
-<script src="app.js"></script>
+<script type="module" src="app.js"></script>
+
 </body>
 </html>
