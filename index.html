@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Accueil - Sélections JSP</title>
 
-<link rel="apple-touch-icon" sizes="180x180" href="icon-192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -55,16 +55,28 @@ function toggleMenu() {
 
 <script type="module" src="app.js"></script>
 
+<!-- 🔥 Bandeau de mise à jour -->
+<div id="updateBanner" class="update-banner" style="display:none;">
+    Nouvelle version disponible —
+    <button onclick="updateApp()">Mettre à jour</button>
+</div>
+
+<!-- 🔥 Service Worker + détection de mise à jour -->
 <script>
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("service-worker.js");
 
   navigator.serviceWorker.addEventListener("controllerchange", () => {
-    window.location.reload(); // ⚡ recharge automatique quand une nouvelle version arrive
+    // Affiche le bandeau au lieu de recharger direct
+    document.getElementById("updateBanner").style.display = "block";
   });
+}
+
+function updateApp() {
+  window.location.reload();
 }
 </script>
 
-
 </body>
 </html>
+
