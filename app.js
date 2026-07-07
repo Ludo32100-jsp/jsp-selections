@@ -484,3 +484,50 @@ window.toggleMenu = () => {
   const menu = document.getElementById("mobileMenu");
   menu.classList.toggle("show");
 };
+// 👉 EXPORT PDF
+
+window.exporterPDF = function () {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const titre = `Classement JSP - Année ${anneeCourante}`;
+  const date = new Date().toLocaleDateString("fr-FR");
+
+  doc.setFontSize(18);
+  doc.text(titre, 14, 20);
+
+  doc.setFontSize(12);
+  doc.text(`Exporté le : ${date}`, 14, 28);
+
+  const body = document.getElementById("classementBody");
+  const rows = [...body.querySelectorAll("tr")].map(tr => {
+    const cells = tr.querySelectorAll("td");
+    return [
+      cells[0].textContent,
+      cells[1].textContent,
+      cells[2].textContent,
+      cells[3].textContent
+    ];
+  });
+
+  doc.autoTable({
+    startY: 40,
+    head: [["Rang", "Nom", "Prénom", "Note"]],
+    body: rows,
+    styles: { halign: "center" },
+    headStyles: { fillColor: [0, 0, 0] },
+    didParseCell: function (data) {
+      const rowIndex = data.row.index + 1;
+
+      if (rowIndex <= 12) {
+        data.cell.styles.fillColor = [0, 200, 0];
+      } else if (rowIndex >= 13 && rowIndex <= 18) {
+        data.cell.styles.fillColor = [255, 165, 0];
+      } else {
+        data.cell.styles.fillColor = [255, 0, 0];
+      }
+    }
+  });
+
+  doc.save(`classement_${anneeCourante}.pdf`);
+};
